@@ -3,16 +3,25 @@ package com.nazar.yevhenii.onlineshop.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nazar.yevhenii.onlineshop.models.enums.OrderStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class UserOrder {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int totalPrice;
+    private String createdAt;
+
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
@@ -21,11 +30,12 @@ public class UserOrder {
     private User user;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private HomeAddress homeAddress;
+    private UserAddress userAddress;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private UserPaymentMethod userPaymentMethod;
+
+    @ElementCollection
     @JsonIgnore
-    private List<Product> products = new ArrayList<>();
-
-
+    private HashMap<Product, Integer> products = new HashMap<>();
 }

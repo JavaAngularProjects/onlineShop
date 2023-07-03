@@ -24,5 +24,5 @@ public class SubCategory {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "subCategory")
     @JsonIgnore
-    private Set<Brand> brands = new LinkedHashSet<>();
+    private Set<Type> brands = new LinkedHashSet<>();
 }

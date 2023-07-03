@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class HomeAddress {
+public class UserAddress {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

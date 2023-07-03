@@ -1,6 +1,6 @@
 package com.nazar.yevhenii.onlineshop.models;
 
-import com.nazar.yevhenii.onlineshop.models.enums.ResponseType;
+import com.nazar.yevhenii.onlineshop.models.enums.ProductResponseType;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,7 +13,7 @@ public class ProductResponse {
     private int likes = 0;
 
     @Enumerated(EnumType.STRING)
-    private ResponseType responseType;
+    private ProductResponseType responseType;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Product product;

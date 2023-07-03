@@ -1,6 +1,6 @@
 package com.nazar.yevhenii.onlineshop.models.enums;
 
-public enum ResponseType {
+public enum ProductResponseType {
     REVIEW, QUESTION
 
 }

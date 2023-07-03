@@ -26,4 +26,8 @@ public class Product {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "product")
     @JsonIgnore
     private List<ProductResponse> productResponses = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "products")
+    @JsonIgnore
+    private List<Characteristic> characteristics = new ArrayList<>();
 }
