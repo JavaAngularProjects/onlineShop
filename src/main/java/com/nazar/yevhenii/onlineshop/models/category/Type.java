@@ -1,4 +1,4 @@
-package com.nazar.yevhenii.onlineshop.models;
+package com.nazar.yevhenii.onlineshop.models.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -15,17 +15,16 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Characteristic {
+public class Type {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String value;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Type type;
+    private SubCategory subCategory;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "type")
     @JsonIgnore
-    private List<Product> products = new ArrayList<>();
+    private List<Characteristic> characteristics = new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package com.nazar.yevhenii.onlineshop.models;
+package com.nazar.yevhenii.onlineshop.models.product;
 
 import com.nazar.yevhenii.onlineshop.models.enums.ProductResponseType;
 import jakarta.persistence.*;

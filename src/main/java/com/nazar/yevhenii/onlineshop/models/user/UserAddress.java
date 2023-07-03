@@ -1,4 +1,4 @@
-package com.nazar.yevhenii.onlineshop.models;
+package com.nazar.yevhenii.onlineshop.models.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

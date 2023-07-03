@@ -1,6 +1,7 @@
-package com.nazar.yevhenii.onlineshop.models;
+package com.nazar.yevhenii.onlineshop.models.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nazar.yevhenii.onlineshop.models.product.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,16 +16,17 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Type {
+public class Characteristic {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    private String value;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private SubCategory subCategory;
+    private Type type;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "type")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Characteristic> characteristics = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 }

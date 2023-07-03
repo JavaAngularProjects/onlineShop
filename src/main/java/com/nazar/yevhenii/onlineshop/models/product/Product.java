@@ -1,6 +1,7 @@
-package com.nazar.yevhenii.onlineshop.models;
+package com.nazar.yevhenii.onlineshop.models.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nazar.yevhenii.onlineshop.models.category.Characteristic;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

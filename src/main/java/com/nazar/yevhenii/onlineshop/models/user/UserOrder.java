@@ -1,6 +1,7 @@
-package com.nazar.yevhenii.onlineshop.models;
+package com.nazar.yevhenii.onlineshop.models.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nazar.yevhenii.onlineshop.models.product.Product;
 import com.nazar.yevhenii.onlineshop.models.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

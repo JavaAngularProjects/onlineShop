@@ -1,4 +1,4 @@
-package com.nazar.yevhenii.onlineshop.models;
+package com.nazar.yevhenii.onlineshop.models.user;
 
 import com.nazar.yevhenii.onlineshop.models.enums.UserPaymentMethodCardType;
 import jakarta.persistence.*;
