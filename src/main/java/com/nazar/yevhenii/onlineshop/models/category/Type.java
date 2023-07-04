@@ -1,6 +1,7 @@
 package com.nazar.yevhenii.onlineshop.models.category;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nazar.yevhenii.onlineshop.models.product.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,4 +28,8 @@ public class Type {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "type")
     @JsonIgnore
     private List<Characteristic> characteristics = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "type")
+    @JsonIgnore
+    private List<Product> products = new ArrayList<>();
 }

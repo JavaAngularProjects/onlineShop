@@ -2,6 +2,7 @@ package com.nazar.yevhenii.onlineshop.models.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nazar.yevhenii.onlineshop.models.category.Characteristic;
+import com.nazar.yevhenii.onlineshop.models.category.Type;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,4 +32,7 @@ public class Product {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "products")
     @JsonIgnore
     private List<Characteristic> characteristics = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Type type;
 }
