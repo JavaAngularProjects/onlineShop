@@ -24,23 +24,22 @@ public class UserService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-
-
     //Registration
-    public AuthenticationResponse register(UserDTO userDTO){
+    public AuthenticationResponse register(UserDTO userDTO) {
         User user = modelMapper.map(userDTO, User.class);
         user.setUserRole(Role.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setCreatedAt(LocalDate.now().toString());
 
         if (userDAO.existsByEmail(user.getEmail()))
-             throw new IllegalArgumentException("This email is taken");
+            throw new IllegalArgumentException("This email is taken");
         userDAO.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().token(jwtToken).build();
     }
+
     //Authentication
-        public AuthenticationResponse authenticate(UserDTO userDTO) {
+    public AuthenticationResponse authenticate(UserDTO userDTO) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
         User user = userDAO.findUserByEmail(userDTO.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
@@ -50,7 +49,7 @@ public class UserService {
     }
 
 
-    public void addUser(UserDTO userDTO){
+    public void addUser(UserDTO userDTO) {
         User user = modelMapper.map(userDTO, User.class);
         userDAO.save(user);
 
