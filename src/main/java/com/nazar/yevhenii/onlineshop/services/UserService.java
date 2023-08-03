@@ -1,7 +1,8 @@
 package com.nazar.yevhenii.onlineshop.services;
 
 import com.nazar.yevhenii.onlineshop.daos.UserDAO;
-import com.nazar.yevhenii.onlineshop.dtos.AuthenticationResponse;
+import com.nazar.yevhenii.onlineshop.dtos.jwt.AuthenticationRequest;
+import com.nazar.yevhenii.onlineshop.dtos.jwt.AuthenticationResponse;
 import com.nazar.yevhenii.onlineshop.dtos.UserDTO;
 import com.nazar.yevhenii.onlineshop.models.enums.Role;
 import com.nazar.yevhenii.onlineshop.models.user.User;
@@ -39,9 +40,10 @@ public class UserService {
     }
 
     //Authentication
-    public AuthenticationResponse authenticate(UserDTO userDTO) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getEmail(), userDTO.getPassword()));
-        User user = userDAO.findUserByEmail(userDTO.getEmail()).orElseThrow();
+    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                authenticationRequest.getEmail(), authenticationRequest.getPassword()));
+        User user = userDAO.findUserByEmail(authenticationRequest.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)

@@ -1,4 +1,4 @@
-package com.nazar.yevhenii.onlineshop.dtos;
+package com.nazar.yevhenii.onlineshop.dtos.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
